@@ -1,3 +1,18 @@
+//exist the locked and unlocked people is same people
+//The time is fixed, so this isbig is still effective
+/*
+int isbig(string a, string b)
+{
+  for(int i=0;i<a.length();i++)
+  {
+      if(a[i]>b[i])
+          return 1;
+      else if(a[i]<b[i])
+          return 0;
+  }
+  return -1;
+}
+*/
 #include <stdio.h>
 #include <string>
 #include <iostream>
