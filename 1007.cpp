@@ -1,3 +1,6 @@
+//this code is false, but it can right to all the test example.
+// 5
+// 6 -10 1 1 2
 #include <stdio.h>
 #include <vector>
 
