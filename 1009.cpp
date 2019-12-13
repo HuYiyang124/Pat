@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <iostream>
+#include <map>
 class poly
 {
     public:
@@ -9,9 +10,13 @@ class poly
         poly res;
         res.coe=a.coe+this->coe;
         res.term=a.term*this->term;
+        if(res.term==0)
+            res.coe=0;
         return res;
     }
 };
+
+std::map<int, float> res;
 
 int main()
 {
@@ -30,7 +35,6 @@ int main()
     }
     i=j=0;
     poly result[105];
-    float res[2005]={0};
     int num=0;
     for(i=0;i<term1;i++)
     {
@@ -39,19 +43,18 @@ int main()
             result[num++]=p1[i]*p2[j];
         }
     }
-    j=0;
     
     for(i=0;i<num;i++)
     {
-        if(res[result[i].coe]==0&&result[i].term>0)
-            j++;
         res[result[i].coe]+=result[i].term;
+        if(res[result[i].term]==0)
+            res.erase(result[i].term);
     }
-    printf("%d",j);
-    for(i=2000;i>=0;i--)
+    
+    printf("%d",res.size());
+    for(std::map<int,float>::reverse_iterator t=res.rbegin();t!=res.rend();t++)
     {
-        if(res[i]>0)
-            printf(" %d %.1f",i,res[i]);
+            printf(" %d %.1f",t->first,t->second);
     }
     return 0;
 }
